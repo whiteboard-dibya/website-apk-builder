@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APK Builder Pro</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+  <div class="app-container">
+    <div class="sidebar">
+      <div class="logo">🚀 APK Studio</div>
+      <button class="nav-btn active" data-view="build">📱 New Build</button>
+      <button class="nav-btn" data-view="history">📜 History</button>
+      <button class="nav-btn" data-view="settings">⚙️ Settings</button>
+    </div>
+
+    <div class="main" id="main-content">
+      <div id="build-view" class="view active">
+        <div class="card">
+          <h2>📝 App Details</h2>
+          <div class="form-grid">
+            <div class="input-group">
+              <label>Website URL</label>
+              <input type="text" id="url" placeholder="https://example.com">
+            </div>
+            <div class="input-group">
+              <label>App Name</label>
+              <input type="text" id="appName" placeholder="My WebApp">
+            </div>
+            <div class="input-group">
+              <label>Package Name</label>
+              <input type="text" id="pkgName" placeholder="com.app.webview">
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>🎨 Assets & Theme</h2>
+          <div class="form-grid">
+            <div class="input-group">
+              <label>App Icon (512x512 PNG)</label>
+              <div class="upload-area" id="icon-drop" data-type="icon">
+                <span>📤 Drag & drop or click</span>
+                <img id="icon-preview" class="hidden" alt="icon">
+              </div>
+              <input type="file" id="icon-file" accept="image/png" hidden>
+            </div>
+            <div class="input-group">
+              <label>Splash Screen</label>
+              <div class="upload-area" id="splash-drop" data-type="splash">
+                <span>📤 Optional splash image</span>
+                <img id="splash-preview" class="hidden" alt="splash">
+              </div>
+              <input type="file" id="splash-file" accept="image/png" hidden>
+            </div>
+          </div>
+          <div style="margin-top: 16px;">
+            <label>Primary Color</label>
+            <input type="color" id="themeColor" value="#6366f1" style="width: 50px; height: 36px; padding: 0;">
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>⚡ Build Options</h2>
+          <div class="toggles" id="toggles">
+            <div class="toggle active" data-val="splash">Splash Screen</div>
+            <div class="toggle" data-val="fullscreen">Fullscreen</div>
+            <div class="toggle active" data-val="offline">Cache Pages</div>
+            <div class="toggle active" data-val="pull-refresh">Pull to Refresh</div>
+            <div class="toggle" data-val="zoom">Zoom Controls</div>
+            <div class="toggle active" data-val="js">JavaScript</div>
+          </div>
+          <div style="margin-top: 12px;" class="form-grid">
+            <div class="input-group">
+              <label>Orientation</label>
+              <select id="orientation">
+                <option value="portrait">Portrait</option>
+                <option value="landscape">Landscape</option>
+                <option value="auto" selected>Auto Rotate</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="card hidden" id="progress-card">
+          <h2 id="stage-label">Preparing Project...</h2>
+          <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+          <div class="log-panel" id="log-panel"></div>
+          <div style="text-align: center; margin-top: 12px;">
+            <button id="download-apk" class="btn-primary hidden">⬇️ Download APK</button>
+            <button id="open-folder" class="btn-small" style="margin-left: 8px;">📁 Open Output</button>
+          </div>
+        </div>
+
+        <button class="fab" id="build-btn" title="Ctrl+B to Build">▶️</button>
+      </div>
+
+      <div id="history-view" class="view hidden">
+        <h2>📜 Build History</h2>
+        <div id="history-list" class="card"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
